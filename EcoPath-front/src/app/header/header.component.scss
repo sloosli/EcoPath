@@ -1,0 +1,66 @@
+@import "./../../assets/css/colors.scss";
+@import "./../../assets/css/variables";
+
+.header {
+  height: $header-height;
+
+  display: flex;
+
+  background-color: $green;
+
+  .logo {
+    width: 45px;
+
+    margin-right: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .nav {
+    height: inherit;
+
+    background-color: $green;
+
+    border-bottom: none;
+
+    .nav__link {
+      height: inherit;
+      margin-top: 0;
+
+      font-size: 20px;
+      color: $white;
+
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background-color: darken($green, 10%);
+
+        color: darken($white, 10%);
+
+        &:after {
+          border-bottom: 2px solid darken($green, 10px);
+        }
+      }
+
+      &_selected {
+        border-bottom: 4px solid darken($green, 15%);
+
+        &:hover:after {
+          border-bottom: 2px solid darken($green, 10px);
+        }
+
+        &:after {
+          border-bottom: 3px solid $green;
+        }
+      }
+    }
+  }
+}
+
+

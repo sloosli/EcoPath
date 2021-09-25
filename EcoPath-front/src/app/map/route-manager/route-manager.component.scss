@@ -1,0 +1,29 @@
+@import "./../../../assets/css/colors";
+
+.route-manager {
+  width: 350px;
+  height: auto;
+
+  padding: 15px 50px;
+
+  position: absolute;
+  z-index: 1000;
+  top: 120px;
+  right: 30px;
+
+  border-radius: 10px;
+
+  background-color: $white;
+
+  .form__label {
+    #label {
+      font-size: 18px;
+    }
+  }
+
+  .form__label_start {
+    #label {
+      color: $red;
+    }
+  }
+}

@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "./assets/css/colors";
+
+body {
+  font-size: 18px;
+  color: $white;
+}
