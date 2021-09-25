@@ -4,7 +4,7 @@
   width: 350px;
   height: auto;
 
-  padding: 15px 50px;
+  padding: 15px 15px;
 
   position: absolute;
   z-index: 1000;
@@ -15,15 +15,60 @@
 
   background-color: $white;
 
-  .form__label {
-    #label {
-      font-size: 18px;
+  &__input-wrapper {
+    padding: 10px 5px 10px 10px;
+
+    border: 2px solid $gray;
+    border-radius: 10px;
+  }
+
+  &__label {
+    margin-right: 5px;
+
+    font-size: 18px;
+    font-weight: bolder;
+
+    &_start {
+      color: $red;
+    }
+
+    &_end {
+      color: $green;
     }
   }
 
-  .form__label_start {
-    #label {
-      color: $red;
+  &__input {
+    width: calc(100% - 50px);
+
+    margin: 0 auto;
+
+    border: none;
+    outline: none;
+
+    color: $black;
+
+    &:focus {
+      border: none;
     }
+  }
+
+  &__hr {
+    size: 3px;
+
+    color: $gray;
+  }
+
+  &__submit {
+    display: block;
+
+    width: 200px;
+    height: 46px;
+
+    margin: 20px auto 0 auto;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: $green;
   }
 }

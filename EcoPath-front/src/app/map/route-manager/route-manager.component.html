@@ -1,16 +1,10 @@
-<div class="route-manager">
-  <form nz-form>
-    <nz-form-item>
-      <nz-form-label class="form__label" nzFor="start">А</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="start" type="text" id="start">
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label class="form__label" nzFor="end">Б</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="end" type="text" id="end">
-      </nz-form-control>
-    </nz-form-item>
-  </form>
-</div>
+<form class="route-manager">
+  <div class="route-manager__input-wrapper">
+    <label class="route-manager__label route-manager__label_start" for="start">A</label>
+    <input class="route-manager__input" type="text" id="start">
+    <hr class="route-manager__hr">
+    <label class="route-manager__label route-manager__label_end" for="end">Б</label>
+    <input class="route-manager__input" type="text" id="end">
+  </div>
+  <button class="route-manager__submit" (click)="onSubmit()">Построить маршрут</button>
+</form>

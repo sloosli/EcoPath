@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {NzLayoutModule} from "ng-zorro-antd/layout";
 import {HeaderModule} from "./header/header.module";
 import {MapModule} from "./map/map.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {MapModule} from "./map/map.module";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NzLayoutModule,
     HeaderModule,
     MapModule
