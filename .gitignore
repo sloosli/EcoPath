@@ -1,2 +1,7 @@
 /venv/
 /.idea/
+/RouteBuilderSite/bin/
+/RouteBuilderSite/obj/
+/RouteBuilderSite/.vs/
+/RouteBuilderSite/RouteBuilderSite.csproj.user
+*.osrm

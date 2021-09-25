@@ -7,6 +7,6 @@ namespace RouteBuilderSite.Services.OsrmService
 {
     public interface IOsrmService
     {
-        Task<IList<Route>> GetRoutes(RouteRequest routeRequest);
+        Task<string> GetRoutes(RouteRequest routeRequest);
     }
 }

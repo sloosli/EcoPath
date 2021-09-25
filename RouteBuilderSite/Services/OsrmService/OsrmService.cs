@@ -1,28 +1,44 @@
 ﻿using Osrmnet;
 using Osrmnet.RouteService;
+using RouteBuilderSite.Dto;
 using RouteBuilderSite.Dto.Api;
 using RouteBuilderSite.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace RouteBuilderSite.Services.OsrmService
 {
     public class OsrmService : IOsrmService, IDisposable
     {
-        private Osrm _osrmEngine;
+        private readonly Dictionary<TransportType, Osrm> _osrmEngineTransportMap = 
+            new Dictionary<TransportType, Osrm>();
 
         public OsrmService()
         {
-            var config = new EngineConfig
+            var bikeConfig = new EngineConfig
             {
                 Algorithm = Algorithm.CH,
-                StorageConfig = "Foot.osrm"
+                StorageConfig = "bicycle.osrm"
             };
-
-            _osrmEngine = new Osrm(config);
+            var osrmBikeEngine = new Osrm(bikeConfig);
+            _osrmEngineTransportMap.Add(TransportType.Bike, osrmBikeEngine);
+            var scooterConfig = new EngineConfig
+            {
+                Algorithm = Algorithm.CH,
+                StorageConfig = "scooter.osrm"
+            };
+            var osrmScooterEngine = new Osrm(scooterConfig);
+            _osrmEngineTransportMap.Add(TransportType.Scooter, osrmScooterEngine);
+            var footConfig = new EngineConfig
+            {
+                Algorithm = Algorithm.CH,
+                StorageConfig = "foot.osrm"
+            };
+            var osrmFootEngine = new Osrm(footConfig);
+            _osrmEngineTransportMap.Add(TransportType.Foot, osrmFootEngine);
         }
 
         public async Task<IList<Route>> GetRoutes(RouteRequest routeRequest)
@@ -30,8 +46,8 @@ namespace RouteBuilderSite.Services.OsrmService
             var routeParameters = new RouteParameters
             {
                 ContinueStraight = false,
-                Overview = OverviewType.False,
-                Geometries = GeometriesType.Polyline6,
+                Overview = OverviewType.Simplified,
+                Geometries = GeometriesType.GeoJSON,
                 Annotations = AnnotationsType.Duration | AnnotationsType.Nodes,
                 Steps = false,
                 NumberOfAlternatives = 20,
@@ -43,7 +59,8 @@ namespace RouteBuilderSite.Services.OsrmService
             };
 
             var routeResult = new RouteResult();
-            var status = await Task.Run(() => _osrmEngine.Route(routeParameters, out routeResult));
+            var currentOsrmEngine = _osrmEngineTransportMap.GetValueOrDefault(routeRequest.TransportType);
+            var status = await Task.Run(() => currentOsrmEngine.Route(routeParameters, out routeResult));
             if (status == Status.Error)
                 throw new BuildRouteException(routeRequest, "Error while building the route");
 
@@ -52,7 +69,10 @@ namespace RouteBuilderSite.Services.OsrmService
 
         public void Dispose()
         {
-            _osrmEngine.Dispose();
+            foreach (var osrmEngineTransportPair in _osrmEngineTransportMap)
+            {
+                osrmEngineTransportPair.Value.Dispose();
+            }
         }
     }
 }

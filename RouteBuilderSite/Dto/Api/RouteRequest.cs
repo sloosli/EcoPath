@@ -1,20 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace RouteBuilderSite.Dto.Api
 {
+    [JsonObject]
     public class RouteRequest
     {
         [Required(ErrorMessage = "Need start coordinates")]
         [MinLength(2, ErrorMessage = "Must be exact 2 float numbers")]
         [MaxLength(2, ErrorMessage = "Must be exact 2 float numbers")]
-        public double[] From { get; }
+        public float[] From { get; set; }
 
-        [Required(ErrorMessage = "Need start coordinates")]
+        [JsonProperty]
+        [Required(ErrorMessage = "Need end coordinates")]
         [MinLength(2, ErrorMessage = "Must be exact 2 float numbers")]
         [MaxLength(2, ErrorMessage = "Must be exact 2 float numbers")]
-        public double[] To { get; }
+        public float[] To { get; set; }
 
-        [Required]
-        public TransportType TransportType { get; }
+        [JsonProperty]
+        [Required(ErrorMessage = "Please, specify foot or bicycle")]
+        public TransportType TransportType { get; set; }
     }
 }

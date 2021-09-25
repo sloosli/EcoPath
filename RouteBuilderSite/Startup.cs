@@ -26,7 +26,7 @@ namespace RouteBuilderSite
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestOsrm", Version = "v1" });
             });
-            services.AddTransient<IOsrmService, OsrmService>();
+            services.AddTransient<IOsrmService, OsrmWebService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

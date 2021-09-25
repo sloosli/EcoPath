@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RouteBuilderSite.Dto;
 using RouteBuilderSite.Dto.Api;
 using RouteBuilderSite.Services.OsrmService;
 using System.Linq;
@@ -18,16 +19,20 @@ namespace RouteBuilderSite.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Post(RouteRequest routeRequest)
+        public async Task<string> Post([FromBody]RouteRequest routeRequest)
         {
-            if (!ModelState.IsValid)
-                return new JsonResult(new { error = "Bad request" })
-                {
-                    StatusCode = 400
-                };
+            if (routeRequest.TransportType == TransportType.Other)
+                return "We currently not support other transport";
 
-            var routes = await _osrmService.GetRoutes(routeRequest);
-            return new JsonResult(new RouteResponse { Routes = routes.ToArray() });
+            try
+            {
+                return await _osrmService.GetRoutes(routeRequest);
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                return "We are so sorry but here is an error";
+            }
         }
 
         [HttpGet]
