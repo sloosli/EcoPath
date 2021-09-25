@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteBuilderSite", "RouteBuilderSite.csproj", "{C025AAA2-694E-44BB-9263-8982522D62BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C025AAA2-694E-44BB-9263-8982522D62BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C025AAA2-694E-44BB-9263-8982522D62BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C025AAA2-694E-44BB-9263-8982522D62BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C025AAA2-694E-44BB-9263-8982522D62BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DDF5396-679F-453A-B00B-0AFFE228C0DD}
+	EndGlobalSection
+EndGlobal
