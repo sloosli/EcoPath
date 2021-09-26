@@ -39,7 +39,7 @@ namespace RouteBuilderSite.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Hello world!";
+            return "Route Builder Api";
         }
     }
 }
