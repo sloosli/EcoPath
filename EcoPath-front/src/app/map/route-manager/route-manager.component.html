@@ -1,10 +1,16 @@
-<form class="route-manager">
+<div class="route-manager">
   <div class="route-manager__input-wrapper">
     <label class="route-manager__label route-manager__label_start" for="start">A</label>
-    <input class="route-manager__input" type="text" id="start">
+    <input class="route-manager__input" type="text" id="start" value="{{from?.join(', ')}}">
     <hr class="route-manager__hr">
     <label class="route-manager__label route-manager__label_end" for="end">Б</label>
-    <input class="route-manager__input" type="text" id="end">
+    <input class="route-manager__input" type="text" id="end" value="{{to?.join(', ')}}">
+  </div>
+  <div class="btn__wrapper">
+    <button [ngClass]="{'btn_active': transportType === 0}" class="btn" (click)="onChangeType(0)">Пешеход</button>
+    <button [ngClass]="{'btn_active': transportType === 1}" class="btn" (click)="onChangeType(1)">Велосипед</button>
+    <button [ngClass]="{'btn_active': transportType === 2}" class="btn" (click)="onChangeType(2)">Самокат</button>
   </div>
   <button class="route-manager__submit" (click)="onSubmit()">Построить маршрут</button>
-</form>
+</div>
+

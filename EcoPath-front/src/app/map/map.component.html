@@ -1,4 +1,5 @@
 <nz-content class="content">
   <div id="map" class="map"></div>
-  <app-route-manager></app-route-manager>
+  <app-route-manager *ngIf="isRouteManager" [from]="from" [to]="to"
+                     (onGetRoute)="onGetRoute($event)"></app-route-manager>
 </nz-content>

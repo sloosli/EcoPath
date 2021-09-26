@@ -71,4 +71,26 @@
 
     background-color: $green;
   }
+
+  .btn__wrapper {
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    color: $black;
+
+    border: 2px solid $green;
+    border-radius: 5px;
+    background-color: $white;
+
+    &_active {
+      color: $white;
+      background-color: $green;
+    }
+  }
 }
+
+
