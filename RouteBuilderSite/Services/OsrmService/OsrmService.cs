@@ -1,19 +1,16 @@
 ﻿using Osrmnet;
 using Osrmnet.RouteService;
-using RouteBuilderSite.Dto;
-using RouteBuilderSite.Dto.Api;
+using RouteBuilderSite.Dto.Routes;
 using RouteBuilderSite.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace RouteBuilderSite.Services.OsrmService
 {
-    public class OsrmService : IOsrmService, IDisposable
+    public class OsrmService : IDisposable//, IOsrmService
     {
-        private readonly Dictionary<TransportType, Osrm> _osrmEngineTransportMap = 
+        private readonly Dictionary<TransportType, Osrm> _osrmEngineTransportMap =
             new Dictionary<TransportType, Osrm>();
 
         public OsrmService()

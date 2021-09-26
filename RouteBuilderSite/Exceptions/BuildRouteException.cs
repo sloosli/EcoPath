@@ -1,4 +1,4 @@
-﻿using RouteBuilderSite.Dto.Api;
+﻿using RouteBuilderSite.Dto.Routes;
 using System;
 
 namespace RouteBuilderSite.Exceptions

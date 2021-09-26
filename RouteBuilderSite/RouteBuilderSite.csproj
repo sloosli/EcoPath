@@ -31,5 +31,8 @@
   <ItemGroup>
     <None Include="bicycle.osrm" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="C:\Users\Denis\.nuget\packages\osrmnet\3.1.0.30\build\netcoreapp3.1\..\..\lib\native\tbbmalloc_proxy.dll" />
+  </ItemGroup>
   
 </Project>

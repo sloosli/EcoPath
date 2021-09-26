@@ -5,13 +5,13 @@ using RouteBuilderSite.Models;
 
 namespace RouteBuilderSite.Services
 {
-    public partial class postgresContext : DbContext
+    public partial class PostgresContext : DbContext
     {
-        public postgresContext()
+        public PostgresContext()
         {
         }
 
-        public postgresContext(DbContextOptions<postgresContext> options)
+        public PostgresContext(DbContextOptions<PostgresContext> options)
             : base(options)
         {
         }
@@ -27,7 +27,7 @@ namespace RouteBuilderSite.Services
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                // It's ok
                 optionsBuilder.UseNpgsql("Host=192.168.50.128;Port=5432;Database=postgres;Username=postgres;Password=pdp565");
             }
         }
@@ -130,6 +130,10 @@ namespace RouteBuilderSite.Services
                 entity.Property(e => e.DeviceId)
                     .ValueGeneratedNever()
                     .HasColumnName("device_id");
+
+                entity.Property(e => e.DeviceGeoX).HasColumnName("device_geo_x");
+
+                entity.Property(e => e.DeviceGeoY).HasColumnName("device_geo_y");
 
                 entity.Property(e => e.DeviceName)
                     .HasMaxLength(200)

@@ -1,6 +1,4 @@
-﻿using Osrmnet;
-using RouteBuilderSite.Dto.Api;
-using System.Collections.Generic;
+﻿using RouteBuilderSite.Dto.Routes;
 using System.Threading.Tasks;
 
 namespace RouteBuilderSite.Services.OsrmService

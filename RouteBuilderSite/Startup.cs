@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RouteBuilderSite.Services;
+using RouteBuilderSite.Services.CleanAirService;
 using RouteBuilderSite.Services.OsrmService;
 
 namespace RouteBuilderSite
@@ -26,7 +28,9 @@ namespace RouteBuilderSite
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestOsrm", Version = "v1" });
             });
+            services.AddDbContext<PostgresContext>();
             services.AddTransient<IOsrmService, OsrmWebService>();
+            services.AddTransient<ICleanAirService, CleanAirService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +51,9 @@ namespace RouteBuilderSite
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapControllers();
             });
         }

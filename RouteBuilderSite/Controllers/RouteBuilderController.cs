@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RouteBuilderSite.Dto;
-using RouteBuilderSite.Dto.Api;
+using RouteBuilderSite.Dto.Routes;
+using RouteBuilderSite.Services.CleanAirService;
 using RouteBuilderSite.Services.OsrmService;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RouteBuilderSite.Controllers
@@ -12,14 +11,16 @@ namespace RouteBuilderSite.Controllers
     public class RouteBuilderController : ControllerBase
     {
         private readonly IOsrmService _osrmService;
+        private readonly ICleanAirService _cleanAirService;
 
-        public RouteBuilderController(IOsrmService osrmService)
+        public RouteBuilderController(IOsrmService osrmService, ICleanAirService cleanAirService)
         {
             _osrmService = osrmService;
+            _cleanAirService = cleanAirService;
         }
 
         [HttpPost]
-        public async Task<string> Post([FromBody]RouteRequest routeRequest)
+        public async Task<string> Post([FromBody] RouteRequest routeRequest)
         {
             if (routeRequest.TransportType == TransportType.Other)
                 return "We currently not support other transport";
